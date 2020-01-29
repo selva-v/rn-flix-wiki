@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 
 class SearchBar extends Component {
   state = { searchTerm: ''};
@@ -15,7 +15,7 @@ class SearchBar extends Component {
           value={this.state.searchTerm}
           onChangeText={text => this.setState({searchTerm: text})}
           style={styles.input}
-          placeholder="Search movies"
+          placeholder="Marvel"
         />
         <Button title="Search" onPress={this.onSearchPress} />
       </View>

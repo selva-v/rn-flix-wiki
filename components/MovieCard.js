@@ -25,7 +25,8 @@ class MovieCard extends Component {
 const styles = StyleSheet.create({
   movieCardContainer: {
     width: "100%",
-    marginBottom: 20,
+    backgroundColor: '#fff',
+    marginBottom: 10,
     borderColor: '#fff',
     borderWidth: 0,
     padding: 10,
@@ -34,29 +35,28 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.41,
-    elevation: 2,
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+    elevation: 1,
   },
   movieCard: {
     flexDirection: "row",
   },
   poster: {
-    width: "27%"
+    width: "30%"
   },
   details: {
-    width: "73%"
+    width: "70%"
   },
   posterImage: {
     width: 90,
     height: 110,
   },
   movieTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
     marginTop: 5,
     marginBottom: 5,
-    
   },
   movieYear: {
     fontSize: 18,

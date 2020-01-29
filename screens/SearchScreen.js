@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
 import SearchBar from "../components/SearchBar";
 import MovieCard from "../components/MovieCard";
 
@@ -7,9 +7,6 @@ const API_KEY = "b9bd48a6";
 const BASE_URL = "http://www.omdbapi.com/"
 
 class SearchScreen extends Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
   state = { movies: [], movieDetails: "", isLoading: false };
 
   onSearchSubmit = searchTerm => {
@@ -31,7 +28,7 @@ class SearchScreen extends Component {
       .then(response => response.json())
       .then(responseJson => {
         this.setState({ movieDetails: responseJson, isLoading: false });
-        console.log(this.state.movieDetails);
+        this.props.navigation.navigate('Details', {movieDetails: this.state.movieDetails});
         return responseJson;
       })
       .catch(error => {
@@ -50,30 +47,34 @@ class SearchScreen extends Component {
       );
     }
     return ( 
-      <View>
-        <Text style={styles.appTitle}>Find movies</Text>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.searchTitle}>Title</Text>
         <View style={styles.inputContainer}>
           <SearchBar onSubmit={this.onSearchSubmit} />
         </View>
         <FlatList
           data={this.state.movies}
           renderItem={itemData => <MovieCard movie={itemData} onMoviePress={() => this.getMovieDetails(itemData)} />}
-          keyExtractor={itemData => itemData.imdbID}
+          keyExtractor={(item, index) => index.toString()}
         ></FlatList>
-      </View> 
+      </SafeAreaView> 
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10
+  },
   loadingSpinner: {
     flex: 1,
     justifyContent: "center"
   },
-  appTitle: {
-    fontSize: 30,
-    textAlign: "center",
-    marginBottom: 20
+  searchTitle: {
+    marginTop: 10,
+    marginBottom: 5
   }
 });
  
