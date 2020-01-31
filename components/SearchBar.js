@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Button } from "react-native";
 
 class SearchBar extends Component {
-  state = { searchTerm: ''};
+  state = { term: ''};
 
   onSearchPress = () => {
-    this.props.onSubmit(this.state.searchTerm);
+    this.props.onSubmit(this.state.term);
   }
   
   render () {
     return (
       <View style={styles.inputContainer}>
         <TextInput
-          value={this.state.searchTerm}
-          onChangeText={text => this.setState({searchTerm: text})}
+          value={this.state.term}
+          onChangeText={text => this.setState({term: text})}
           style={styles.input}
           placeholder="Marvel"
         />
