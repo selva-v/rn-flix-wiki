@@ -23,6 +23,6 @@ You will need the following things installed on your computer.
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/20811356/73537163-c1600280-4462-11ea-8986-7575cae23a20.png)
-![image](https://user-images.githubusercontent.com/20811356/73537218-eb192980-4462-11ea-99c5-1670b600f699.png)
-![image](https://user-images.githubusercontent.com/20811356/73537247-fd936300-4462-11ea-906f-2827e4d18b46.png)
+![image](https://user-images.githubusercontent.com/20811356/73537471-84484000-4463-11ea-9b68-e706bff1c7d2.png)
+![image](https://user-images.githubusercontent.com/20811356/73537488-8ca07b00-4463-11ea-85a5-452c2dae007d.png)
+![image](https://user-images.githubusercontent.com/20811356/73537505-932ef280-4463-11ea-8f36-77a9a75d727f.png)
