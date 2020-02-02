@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator, StatusBar } from "react-native";
 import SearchBar from "../components/SearchBar";
 import MovieCard from "../components/MovieCard";
 
@@ -76,24 +76,26 @@ class SearchScreen extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content" />
         {this.state.isLoading ? (
           <View style={styles.loadingSpinner}>
             <ActivityIndicator size="large" color="#135a91" />
           </View>
         ) : null}
-
-        <Text style={styles.searchTitle}>Title</Text>
-        <View style={styles.inputContainer}>
-          <SearchBar onSubmit={this.onSearchSubmit} />
+        <View style={styles.wrapper}>
+          <Text style={styles.searchTitle}>Title</Text>
+          <View style={styles.inputContainer}>
+            <SearchBar onSubmit={this.onSearchSubmit} />
+          </View>
+          <FlatList
+            data={this.state.movies}
+            renderItem={itemData => <MovieCard movie={itemData} onMoviePress={() => this.getMovieDetails(itemData)} />}
+            keyExtractor={(item, index) => index.toString()}
+            onEndReached={() => this.handleLoadMore()}
+            onEndReachedThreshold={0.5}
+            ListFooterComponent={() => this.renderFooter()}
+          ></FlatList>
         </View>
-        <FlatList
-          data={this.state.movies}
-          renderItem={itemData => <MovieCard movie={itemData} onMoviePress={() => this.getMovieDetails(itemData)} />}
-          keyExtractor={(item, index) => index.toString()}
-          onEndReached={() => this.handleLoadMore()}
-          onEndReachedThreshold={0.5}
-          ListFooterComponent={() => this.renderFooter()}
-        ></FlatList>
       </SafeAreaView>
     );
   }
@@ -102,6 +104,9 @@ class SearchScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#f1f8fd"
+  },
+  wrapper: {
     marginLeft: 10,
     marginRight: 10
   },
@@ -116,8 +121,9 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
   searchTitle: {
+    fontSize: 18,
     marginTop: 10,
-    marginBottom: 5
+    marginBottom: 10
   },
   footer: {
     padding: 10,

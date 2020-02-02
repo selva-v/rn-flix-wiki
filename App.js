@@ -11,7 +11,19 @@ const navigator = createStackNavigator(
   {
     initialRouteName: 'Home',
     defaultNavigationOptions: {
-      title: 'Search movies'
+      title: 'Search movies',
+      headerStyle: {
+        backgroundColor: '#007aff',
+        elevation: 0,
+        shadowOpacity: 0
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#ffffff'
+      },
+      headerBackTitleVisible: false
     }
   }
 );
